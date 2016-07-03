@@ -17,7 +17,7 @@ import {Component2Component} from "./component2.component";
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  {path: '/c1/:source', name: 'Component1', component: Component1Component},
+  {path: '/c1/:source/...', name: 'Component1', component: Component1Component},
   {path: '/c2', name: 'Component2', component: Component2Component}
 ])
 export class AppComponent {
