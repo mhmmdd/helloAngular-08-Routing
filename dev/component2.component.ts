@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {Router} from "angular2/router";
+import {Router, CanDeactivate, ComponentInstruction} from "angular2/router";
 
 @Component({
   template: `
@@ -7,10 +7,14 @@ import {Router} from "angular2/router";
     <button (click)="onNavigate()">Take me to Component 1</button>
   `
 })
-export class Component2Component {
+export class Component2Component implements CanDeactivate {
   constructor(private _router: Router) {}
 
   onNavigate() {
     this._router.navigate(['Component1', {source: 'Component 2'}]);
+  }
+
+  routerCanDeactivate(nextInstruction:ComponentInstruction, prevInstruction:ComponentInstruction):boolean|Promise<boolean> {
+    return confirm("Sure?");
   }
 }
